@@ -1,0 +1,499 @@
+/* 1. Global styles for the entire page */
+body {
+    background-color: #F4F1EA;
+    color: #333333;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+
+    /* --- Week 5 CSS Grid Page Layout --- */
+    /*
+     * The body is the top-level grid container for the entire page.
+     * Four named grid areas are defined, stacking vertically:
+     *   [header] – site banner with logo/title, spans full width
+     *   [nav]    – navigation bar, spans full width
+     *   [main]   – main content area; grows to fill available space (1fr)
+     *   [footer] – site footer, spans full width, stays at the bottom
+     *
+     * min-height: 100vh ensures the footer is always pushed to the
+     * bottom of the viewport even on short-content pages.
+     */
+    display: grid;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+}
+
+/* 2. Heading styles using Google Font */
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #CC5500;
+    margin-bottom: 1rem;
+}
+
+/* 3. Class selector for the main header layout */
+/* Grid area: header – contains the site banner, logo, and page title */
+.main-header {
+    grid-area: header;
+    background-color: #FFFFFF;
+    padding: 2rem 5%;
+    text-align: center;
+    border-bottom: 3px solid #CC5500;
+}
+
+/* Rule to center the logo image specifically */
+.logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+    border: none; /* Removes the default img border from rule #8 */
+}
+
+/* 4. Link styling for the navigation menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* 5. Styling individual navigation items */
+nav li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+/* 6. Anchor tag styling for consistent link colors */
+a {
+    color: #CC5500;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 7. Hover state for links to improve user experience */
+a:hover {
+    text-decoration: underline;
+    color: #333333;
+}
+
+/* 8. Responsive image styling using relative units */
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #CCCCCC;
+}
+
+/* 9. Class selector for the main content area with padding */
+.content-container {
+    padding: 2rem 10%;
+}
+
+/* 10. Footer styling */
+/* Grid area: footer – site-wide copyright and legal information */
+footer {
+    grid-area: footer;
+    background-color: #333333;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* --- Week 4 Flexbox Navigation Styles --- */
+
+/*
+ * Grid area: nav – the navigation bar sits between the header and main
+ * content. FlexBox is used inside this grid area to arrange the nav
+ * links horizontally and centered (see Week 4 work below).
+ */
+.main-nav {
+    grid-area: nav;
+    background-color: #333333;
+    border-bottom: 3px solid #CC5500;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0.75rem 0;
+    margin: 0;
+}
+
+.main-nav li {
+    margin: 0 1.5rem;
+}
+
+/* Nav links use white text so they are readable on the dark background */
+.main-nav a {
+    color: #FFFFFF;
+}
+
+.main-nav a:hover {
+    color: #F4F1EA;
+    text-decoration: underline;
+}
+
+/* --- Week 4 Featured Cards Flexbox Layout --- */
+
+/*
+ * Grid area: main – the primary content region.
+ * The <main> element is assigned to this area and grows to fill the
+ * remaining vertical space (set via 1fr in grid-template-rows).
+ */
+main {
+    grid-area: main;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 0 1 300px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    color: #CC5500;
+}
+
+.card p {
+    font-size: 0.9rem;
+}
+
+/* --- Week 6 Gear List Styles --- */
+
+/*
+ * .gear-list styles the dynamically built <ul> inserted by week6.js.
+ * This is a proper content list — intentionally different from the
+ * navigation bar lists above. Each item gets a left border accent in
+ * the site's burnt-orange color, a white card background, and a subtle
+ * hover lift to make the list feel interactive and on-brand.
+ */
+.gear-list {
+    list-style-type: none;       /* Remove default bullet points */
+    padding: 0;
+    margin: 1.5rem 0;
+    max-width: 700px;            /* Constrain width for readability */
+}
+
+.gear-list li {
+    background-color: #FFFFFF;
+    border-left: 5px solid #CC5500;  /* Burnt-orange left accent bar */
+    border-radius: 0 6px 6px 0;      /* Rounded on the right side only */
+    padding: 0.85rem 1.25rem;
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    color: #333333;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Slight lift on hover to give the list a tactile feel */
+.gear-list li:hover {
+    transform: translateX(4px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.14);
+}
+
+/* Intro text section on the Gear page */
+.gear-intro p {
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+/* Section that wraps the dynamically generated list */
+.gear-list-section {
+    margin-top: 1rem;
+}
+
+/* --- Contact Page Form Styles --- */
+
+/*
+ * #form-section wraps the entire booking inquiry form.
+ * A top margin separates it visually from the contact details above it.
+ */
+#form-section {
+    margin-top: 2.5rem;
+}
+
+/*
+ * #webForm sets the max width and adds a white card background so the
+ * form stands out from the beige page background, matching the card
+ * style used elsewhere on the site.
+ */
+#webForm {
+    max-width: 680px;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/*
+ * fieldset: each group of related inputs gets a visible border in the
+ * site's accent color and rounded corners for a polished look.
+ * Margin-bottom spaces the fieldsets apart.
+ */
+fieldset {
+    border: 2px solid #CC5500;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.75rem;
+}
+
+/*
+ * legend: the fieldset label. Montserrat keeps it consistent with the
+ * site's heading font. Padding adds breathing room around the text.
+ */
+legend {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #CC5500;
+    padding: 0 0.5rem;
+    font-weight: 700;
+}
+
+/*
+ * .form-row: wraps each label + input pair.
+ * display:flex with flex-direction:column stacks the label above its
+ * control, giving consistent alignment across all field types.
+ */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.form-row:last-child {
+    margin-bottom: 0;
+}
+
+/*
+ * label: uppercase tracking gives labels a subtle editorial feel that
+ * matches the Montserrat headings without adding another font.
+ */
+label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #555555;
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/*
+ * .group-label: applied to the descriptive label above a radio or
+ * checkbox group. Same style as individual labels.
+ */
+.group-label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #555555;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/*
+ * Shared input styling: text, email, tel, date, and select all get
+ * the same border, padding, and focus ring so the form looks unified.
+ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #333333;
+    background-color: #FAFAFA;
+    box-sizing: border-box;  /* Prevents inputs from overflowing their container */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus state: highlight the active field with the site's orange accent */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #CC5500;
+    box-shadow: 0 0 0 3px rgba(204, 85, 0, 0.15);
+}
+
+/*
+ * textarea: allow vertical resizing only so the form layout stays intact.
+ */
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/*
+ * select: add a small arrow indicator so it is clearly a dropdown.
+ */
+select {
+    cursor: pointer;
+}
+
+/*
+ * .radio-group and .checkbox-group: flex column containers that stack
+ * each option label on its own line with a comfortable gap.
+ */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/*
+ * .option-label: the label wrapping each radio or checkbox + its text.
+ * display:flex and align-items:center keep the control and text vertically
+ * centered. cursor:pointer makes it clear the whole label is clickable.
+ */
+.option-label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: #333333;
+    text-transform: none;
+    letter-spacing: normal;
+    cursor: pointer;
+}
+
+/*
+ * Accent color for radio buttons and checkboxes via accent-color.
+ * This is the simplest modern way to tint native controls.
+ */
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #CC5500;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    flex-shrink: 0;  /* Keeps the control from shrinking on narrow screens */
+}
+
+/*
+ * .required: the asterisk marking required fields. Orange to draw
+ * attention and consistent with the site accent color.
+ */
+.required {
+    color: #CC5500;
+    font-weight: bold;
+}
+
+/*
+ * .form-buttons: flex row that right-aligns the reset and submit buttons.
+ * gap separates them without needing individual margins.
+ */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+/*
+ * Shared button base: Montserrat font, uppercase text, and rounded corners
+ * keep buttons consistent with the site's editorial style.
+ */
+.form-buttons button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.65rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/*
+ * Reset button: outlined style so it is visually secondary to submit.
+ */
+#resetBtn {
+    background-color: transparent;
+    color: #CC5500;
+    border: 2px solid #CC5500;
+}
+
+#resetBtn:hover {
+    background-color: #FFF0E6;
+}
+
+/*
+ * Submit button: solid burnt-orange fill — the primary call to action.
+ */
+#submitBtn {
+    background-color: #CC5500;
+    color: #FFFFFF;
+}
+
+#submitBtn:hover {
+    background-color: #AA4400;
+}
+
+/* Slight press effect on click for both buttons */
+.form-buttons button:active {
+    transform: scale(0.97);
+}
+
+/* Thank-you panel shown after successful form submission */
+.success-box {
+    max-width: 680px;
+    background-color: #FFFFFF;
+    border: 2px solid #CC5500;
+    border-left: 6px solid #CC5500;
+    border-radius: 6px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.success-box h3 {
+    margin-top: 0;
+}
+
+/* Inline error message shown when the network request fails */
+.error-msg {
+    max-width: 680px;
+    background-color: #FFF0E6;
+    border: 1px solid #CC5500;
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    color: #333333;
+    font-size: 0.95rem;
+}

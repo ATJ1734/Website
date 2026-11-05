@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Gear Guide - A.T. Johnson Photography</title>
+ 
+    <!-- Google Fonts: Montserrat for headings, Open Sans for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+ 
+    <!-- Link to the shared site stylesheet -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+ 
+  <body>
+ 
+    <!-- Grid area: header — site banner with page title -->
+    <header class="main-header">
+      <h1>Gear Guide</h1>
+    </header>
+ 
+    <!-- Grid area: nav — site-wide navigation bar (FlexBox layout) -->
+    <!-- Updated to include all four pages -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gear.html">Gear</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+ 
+    <!-- Grid area: main — primary page content -->
+    <main class="content-container">
+ 
+      <!-- Introductory section: short description of the page's purpose -->
+      <section class="gear-intro">
+        <h2>What's in the Bag</h2>
+        <p>
+          Great images start long before the shutter clicks — they start with
+          the right tools. Below is a rundown of the camera bodies, lenses,
+          and accessories that make it into the field on most shoots. Every
+          piece of kit has been tested on dusty desert roads and rain-soaked
+          coastlines, so this list reflects what actually holds up out there.
+        </p>
+      </section>
+ 
+      <!-- Gear list section: the <p id="list"> paragraph is populated by
+           week6.js at page load. JavaScript builds the <ul> HTML string
+           and injects it here via innerHTML. -->
+      <section class="gear-list-section">
+        <h2>Current Kit</h2>
+ 
+        <!-- Empty paragraph targeted by JavaScript; innerHTML will be
+             replaced with a dynamically built unordered list of gear items -->
+        <p id="list"></p>
+ 
+      </section>
+ 
+    </main>
+ 
+    <!-- Grid area: footer — copyright and site information -->
+    <footer class="site-footer">
+      <p>&copy; 2026 A.T. Johnson Photography. All rights reserved.</p>
+    </footer>
+ 
+    <!-- JavaScript file that builds and injects the gear list on page load -->
+    <script src="week6.js"></script>
+ 
+  </body>
+</html>

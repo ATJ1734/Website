@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact - A.T. Johnson Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <!-- Grid area: header — site banner with page title -->
+    <header class="main-header">
+      <h1>Get in Touch</h1>
+    </header>
+
+    <!-- Grid area: nav — site-wide navigation bar (FlexBox layout) -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gear.html">Gear</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Grid area: main — primary page content -->
+    <main class="content-container">
+
+      <!-- Introductory text explaining why to reach out -->
+      <section id="contact-intro">
+        <p>
+          Thank you for your interest in A.T. Johnson Photography.
+          Whether you are looking to purchase high-quality prints for your home,
+          inquire about commercial commissions for your adventure brand, or simply
+          want to discuss the best trails in Southern Utah, I would love
+          to hear from you.
+        </p>
+        <p>
+          I am currently available for bookings for the upcoming season. Fill out
+          the inquiry form below and I will get back to you within two business days.
+        </p>
+      </section>
+
+      <!-- Contact details: email, social, and location -->
+      <section id="contact-info">
+        <h2>Contact Details</h2>
+        <p>Email: <a href="mailto:atjohnsonphotos@gmail.com">atjohnsonphotos@gmail.com</a></p>
+        <p>Follow the Adventure: <a href="https://www.instagram.com/mycarguyadam/" target="_blank">Instagram</a></p>
+        <address>
+          Located in:<br>
+          St. George, Utah<br>
+          USA
+        </address>
+      </section>
+
+      <!-- ============================================================
+           BOOKING INQUIRY FORM
+           id="webForm"  action="#"
+           Submission is handled by formSubmit.js, which POSTs the data
+           to a Google Apps Script web app, writes it to Google Sheets,
+           and triggers an email notification to the site owner.
+           ============================================================ -->
+      <section id="form-section">
+        <h2>Booking Inquiry</h2>
+
+        <!-- Thank-you panel — hidden until the form is submitted successfully.
+             JavaScript swaps this in and hides the form after a successful POST. -->
+        <div id="form-success" style="display:none;">
+          <div class="success-box">
+            <h3>Inquiry Received!</h3>
+            <p>
+              Thanks for reaching out. I'll review your booking request and
+              get back to you at the email address you provided within
+              two business days.
+            </p>
+            <p>— A.T. Johnson</p>
+          </div>
+        </div>
+
+        <!-- Error message — shown if the network request fails -->
+        <div id="form-error" style="display:none;">
+          <p class="error-msg">
+            Something went wrong sending your inquiry. Please try again or
+            email directly at
+            <a href="mailto:atjohnsonphotos@gmail.com">atjohnsonphotos@gmail.com</a>.
+          </p>
+        </div>
+
+        <form id="webForm" action="#">
+
+          <!-- ---- FIELDSET 1: Personal Information ---- -->
+          <!-- Collects the visitor's basic contact details -->
+          <fieldset id="fieldset-personal">
+            <legend>Your Information</legend>
+
+            <!-- Full name: standard single-line text input -->
+            <div class="form-row">
+              <label for="fullName">Full Name <span class="required">*</span></label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Jane Smith"
+                required>
+            </div>
+
+            <!-- Email address: uses type="email" for built-in format validation -->
+            <div class="form-row">
+              <label for="emailAddress">Email Address <span class="required">*</span></label>
+              <input
+                type="email"
+                id="emailAddress"
+                name="emailAddress"
+                placeholder="jane@example.com"
+                required>
+            </div>
+
+            <!-- Phone number: uses type="tel" for mobile numeric keyboard on phones -->
+            <div class="form-row">
+              <label for="phoneNumber">Phone Number</label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="(435) 555-0100">
+            </div>
+
+          </fieldset><!-- end fieldset-personal -->
+
+
+          <!-- ---- FIELDSET 2: Shoot Details ---- -->
+          <!-- Collects information about the requested photography session -->
+          <fieldset id="fieldset-shoot">
+            <legend>Shoot Details</legend>
+
+            <!-- Preferred shoot date: date picker input -->
+            <div class="form-row">
+              <label for="shootDate">Preferred Date</label>
+              <input
+                type="date"
+                id="shootDate"
+                name="shootDate">
+            </div>
+
+            <!-- Shoot location: text input paired with a datalist of popular
+                 Southern Utah / Southwest locations as autocomplete suggestions -->
+            <div class="form-row">
+              <label for="shootLocation">Shoot Location</label>
+              <input
+                type="text"
+                id="shootLocation"
+                name="shootLocation"
+                list="locationSuggestions"
+                placeholder="Type a location or choose a suggestion">
+
+              <!-- datalist provides autocomplete options without restricting free text -->
+              <datalist id="locationSuggestions">
+                <option value="Zion National Park, UT">
+                <option value="Bryce Canyon National Park, UT">
+                <option value="Capitol Reef National Park, UT">
+                <option value="Canyonlands National Park, UT">
+                <option value="Arches National Park, UT">
+                <option value="Antelope Canyon, AZ">
+                <option value="Monument Valley, UT/AZ">
+                <option value="Valley of Fire, NV">
+                <option value="Snow Canyon State Park, UT">
+                <option value="St. George, UT — Urban/Lifestyle">
+              </datalist>
+            </div>
+
+            <!-- Type of shoot: radio button group — only one option allowed -->
+            <!-- Each radio shares the same name="shootType" so they are mutually exclusive -->
+            <div class="form-row">
+              <label class="group-label">Type of Shoot <span class="required">*</span></label>
+              <div class="radio-group" id="shootType-group">
+
+                <label class="option-label">
+                  <input
+                    type="radio"
+                    id="shootLandscape"
+                    name="shootType"
+                    value="landscape">
+                  Landscape / Scenic
+                </label>
+
+                <label class="option-label">
+                  <input
+                    type="radio"
+                    id="shootVehicle"
+                    name="shootType"
+                    value="vehicle">
+                  Adventure Vehicle / Overland
+                </label>
+
+                <label class="option-label">
+                  <input
+                    type="radio"
+                    id="shootWildlife"
+                    name="shootType"
+                    value="wildlife">
+                  Wildlife
+                </label>
+
+                <label class="option-label">
+                  <input
+                    type="radio"
+                    id="shootPortrait"
+                    name="shootType"
+                    value="portrait">
+                  Portrait / Lifestyle
+                </label>
+
+              </div><!-- end radio-group -->
+            </div>
+
+            <!-- Preferred lighting conditions: checkbox group — multiple selections allowed -->
+            <!-- Each checkbox has a unique name so all checked values can be submitted -->
+            <div class="form-row">
+              <label class="group-label">Preferred Lighting Conditions</label>
+              <div class="checkbox-group" id="lighting-group">
+
+                <label class="option-label">
+                  <input
+                    type="checkbox"
+                    id="lightGolden"
+                    name="lightGolden"
+                    value="goldenHour">
+                  Golden Hour (sunrise / sunset)
+                </label>
+
+                <label class="option-label">
+                  <input
+                    type="checkbox"
+                    id="lightBlue"
+                    name="lightBlue"
+                    value="blueHour">
+                  Blue Hour (just after sunset)
+                </label>
+
+                <label class="option-label">
+                  <input
+                    type="checkbox"
+                    id="lightOvercast"
+                    name="lightOvercast"
+                    value="overcast">
+                  Overcast / Soft Light
+                </label>
+
+                <label class="option-label">
+                  <input
+                    type="checkbox"
+                    id="lightStormy"
+                    name="lightStormy"
+                    value="stormy">
+                  Stormy / Moody Weather
+                </label>
+
+              </div><!-- end checkbox-group -->
+            </div>
+
+            <!-- Referral source: drop-down select menu -->
+            <div class="form-row">
+              <label for="referralSource">How did you hear about us?</label>
+              <select id="referralSource" name="referralSource">
+                <option value="">— Please select —</option>
+                <option value="instagram">Instagram</option>
+                <option value="google">Google Search</option>
+                <option value="wordOfMouth">Word of Mouth</option>
+                <option value="print">Print / Magazine</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+          </fieldset><!-- end fieldset-shoot -->
+
+
+          <!-- ---- FIELDSET 3: Message ---- -->
+          <!-- Free-form text area for additional details or questions -->
+          <fieldset id="fieldset-message">
+            <legend>Your Message</legend>
+
+            <div class="form-row">
+              <label for="userMessage">Additional Details or Questions</label>
+              <!-- textarea provides multi-line text entry for longer messages -->
+              <textarea
+                id="userMessage"
+                name="userMessage"
+                rows="6"
+                placeholder="Describe your vision, ask questions, or share any other details that would help me prepare for your shoot..."></textarea>
+            </div>
+
+          </fieldset><!-- end fieldset-message -->
+
+
+          <!-- ---- Form Buttons ---- -->
+          <!-- reset clears all fields back to their default values    -->
+          <!-- submit sends the form (action="#" keeps user on the page) -->
+          <div class="form-buttons">
+            <button type="reset"  id="resetBtn"  name="resetBtn">Clear Form</button>
+            <button type="submit" id="submitBtn" name="submitBtn">Send Inquiry</button>
+          </div>
+
+        </form><!-- end #webForm -->
+
+      </section><!-- end #form-section -->
+
+    </main>
+
+    <!-- Grid area: footer — copyright and site information -->
+    <footer class="site-footer">
+      <p>&copy; 2026 A.T. Johnson Photography</p>
+    </footer>
+
+    <!-- Form submission script.
+         Intercepts the submit event, POSTs data to Google Apps Script,
+         and swaps in the thank-you panel without reloading the page. -->
+    <script src="formSubmit.js"></script>
+
+  </body>
+</html>
